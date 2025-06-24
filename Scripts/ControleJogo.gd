@@ -115,6 +115,7 @@ func mostra_tudo() -> void:
 
 
 func ganhou() -> void:
+	ui_jogo.atualizar_textos(configuracao_atual, configuracao_inicial.bussolas > 0)
 	ui_jogo.travar_fundo()
 	mostra_tudo()
 	await get_tree().create_timer(2).timeout
@@ -123,6 +124,7 @@ func ganhou() -> void:
 
 
 func perdeu(motivo : MOTIVO_DERROTA) -> void:
+	ui_jogo.atualizar_textos(configuracao_atual, configuracao_inicial.bussolas > 0)
 	ui_jogo.travar_fundo()
 	mostra_tudo()
 	await get_tree().create_timer(2).timeout
