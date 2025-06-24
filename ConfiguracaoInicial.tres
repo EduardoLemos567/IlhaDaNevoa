@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InformacaoPartida" load_steps=2 format=3 uid="uid://dx8kectmgb7s2"]
+
+[ext_resource type="Script" uid="uid://40wxq112mujw" path="res://Scripts/InformacaoPartida.gd" id="1_bxu37"]
+
+[resource]
+script = ExtResource("1_bxu37")
+vidas = 5
+movimentos = 10
+armadilhas = 20
+bussolas = 1
+metadata/_custom_type_script = "uid://40wxq112mujw"

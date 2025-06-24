@@ -1,0 +1,207 @@
+[gd_scene load_steps=17 format=3 uid="uid://djs6huheci0at"]
+
+[ext_resource type="Script" uid="uid://caxb01b8stx7u" path="res://Scripts/Celula.gd" id="1_6y372"]
+[ext_resource type="Texture2D" uid="uid://7b74ugw4532i" path="res://Texturas/GoogleEmojis/skull.svg" id="2_6agke"]
+[ext_resource type="Texture2D" uid="uid://blpqrmqnwvnr5" path="res://Texturas/GoogleEmojis/scroll.svg" id="3_lbcni"]
+[ext_resource type="Texture2D" uid="uid://cs50sk7nbvnio" path="res://Texturas/arrow.svg" id="4_a83g8"]
+
+[sub_resource type="Gradient" id="Gradient_6agke"]
+offsets = PackedFloat32Array(0, 0.670683)
+colors = PackedColorArray(1, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lbcni"]
+gradient = SubResource("Gradient_6agke")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_a83g8"]
+colors = PackedColorArray(1, 0.616667, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_illt2"]
+gradient = SubResource("Gradient_a83g8")
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_h7exk"]
+load_path = "res://.godot/imported/crown.svg-18c66c939a43461ac1112c6c69a1f760.ctex"
+
+[sub_resource type="Gradient" id="Gradient_5ei7h"]
+offsets = PackedFloat32Array(0.413655, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 0.721, 0.46, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ukmv4"]
+gradient = SubResource("Gradient_5ei7h")
+fill_from = Vector2(0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_lbcni"]
+font_color = Color(0, 0, 0, 1)
+outline_size = 2
+outline_color = Color(0.163194, 0.660635, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_38ip1"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6y372"]
+gradient = SubResource("Gradient_38ip1")
+
+[sub_resource type="Gradient" id="Gradient_6y372"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.187176, 0.187176, 0.187176, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6agke"]
+gradient = SubResource("Gradient_6y372")
+
+[node name="Celula" type="Control" node_paths=PackedStringArray("botao", "icone_armadilha", "icone_tesouro", "icone_pista", "texto_pista", "seta_bussola")]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_6y372")
+botao = NodePath("Botao")
+icone_armadilha = NodePath("IconeArmadilha")
+icone_tesouro = NodePath("IconeTesouro")
+icone_pista = NodePath("IconePista")
+texto_pista = NodePath("IconePista/TextoPista")
+seta_bussola = NodePath("IconePista/SetaBussola")
+
+[node name="IconeArmadilha" type="TextureRect" parent="."]
+visible = false
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_lbcni")
+
+[node name="Icon" type="TextureRect" parent="IconeArmadilha"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_6agke")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="IconeTesouro" type="TextureRect" parent="."]
+visible = false
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_illt2")
+
+[node name="Icon" type="TextureRect" parent="IconeTesouro"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CompressedTexture2D_h7exk")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="IconePista" type="TextureRect" parent="."]
+visible = false
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_ukmv4")
+
+[node name="Icon" type="TextureRect" parent="IconePista"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_lbcni")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SetaBussola" type="TextureRect" parent="IconePista"]
+visible = false
+modulate = Color(2.5028e-06, 0.652123, 0.917965, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(24, 24)
+texture = ExtResource("4_a83g8")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextoPista" type="Label" parent="IconePista"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -11.5
+offset_top = -11.5
+offset_right = 16.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "999"
+label_settings = SubResource("LabelSettings_lbcni")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Botao" type="TextureButton" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = SubResource("GradientTexture2D_6y372")
+texture_hover = SubResource("GradientTexture2D_6agke")
+ignore_texture_size = true
+stretch_mode = 5
+
+[connection signal="pressed" from="Botao" to="." method="quando_botao_pressionado"]

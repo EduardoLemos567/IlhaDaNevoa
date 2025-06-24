@@ -1,0 +1,122 @@
+[gd_scene load_steps=7 format=3 uid="uid://byd1n2t1w6ntj"]
+
+[ext_resource type="Script" uid="uid://bk6s05mpj6g7f" path="res://Scripts/BannerFimPartida.gd" id="1_xky8e"]
+[ext_resource type="PackedScene" uid="uid://bkctr06r4ue2h" path="res://Prefabs/BotaoRecomecar.tscn" id="2_36abn"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fos0i"]
+font_size = 72
+font_color = Color(0.827874, 0.6549, 0.262243, 1)
+outline_size = 10
+outline_color = Color(0.413374, 0.237558, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3dxm6"]
+font_size = 72
+font_color = Color(0.140744, 0.696944, 0.621811, 1)
+outline_size = 10
+outline_color = Color(0.0966153, 0, 0.846465, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_lgr22"]
+font_size = 28
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_03owx"]
+font_size = 28
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[node name="BannerFimPartida" type="ColorRect" node_paths=PackedStringArray("texto_vitoria", "caixa_derrota", "texto_sem_vidas", "texto_sem_movimentos")]
+custom_minimum_size = Vector2(0, 200)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.235294)
+script = ExtResource("1_xky8e")
+texto_vitoria = NodePath("FundoTexto/TextoVitoria")
+caixa_derrota = NodePath("FundoTexto/CaixaDerrota")
+texto_sem_vidas = NodePath("FundoTexto/CaixaDerrota/TextoSemVidas")
+texto_sem_movimentos = NodePath("FundoTexto/CaixaDerrota/TextoSemMovimentos")
+
+[node name="FundoTexto" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -100.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TextoVitoria" type="Label" parent="FundoTexto"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -140.0
+offset_top = -49.5
+offset_right = 140.0
+offset_bottom = 49.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "VITÓRIA"
+label_settings = SubResource("LabelSettings_fos0i")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CaixaDerrota" type="VBoxContainer" parent="FundoTexto"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -165.0
+offset_top = -49.5
+offset_right = 165.0
+offset_bottom = 49.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextoDerrota" type="Label" parent="FundoTexto/CaixaDerrota"]
+layout_mode = 2
+text = "DERROTA"
+label_settings = SubResource("LabelSettings_3dxm6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextoSemVidas" type="Label" parent="FundoTexto/CaixaDerrota"]
+visible = false
+layout_mode = 2
+text = "Acabaram as vidas"
+label_settings = SubResource("LabelSettings_lgr22")
+horizontal_alignment = 1
+
+[node name="TextoSemMovimentos" type="Label" parent="FundoTexto/CaixaDerrota"]
+visible = false
+layout_mode = 2
+text = "Acabaram os movimentos"
+label_settings = SubResource("LabelSettings_03owx")
+horizontal_alignment = 1
+
+[node name="BotaoRecomecar" parent="." instance=ExtResource("2_36abn")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -70.0
+offset_top = 176.0
+offset_right = 70.0
+offset_bottom = 216.0
+grow_horizontal = 2
+grow_vertical = 2

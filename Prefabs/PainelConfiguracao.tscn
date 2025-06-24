@@ -1,0 +1,149 @@
+[gd_scene load_steps=8 format=3 uid="uid://bq1lbvs7k67fs"]
+
+[ext_resource type="Script" uid="uid://y4h81jiktbf0" path="res://Scripts/PainelConfiguracao.gd" id="1_p0wao"]
+[ext_resource type="Texture2D" uid="uid://cvqb5e7wmpuwb" path="res://Texturas/GoogleEmojis/red_heart.svg" id="2_s1xkg"]
+[ext_resource type="Texture2D" uid="uid://7y2w1vx54hpw" path="res://Texturas/GoogleEmojis/boot.svg" id="3_ivguw"]
+[ext_resource type="Texture2D" uid="uid://7b74ugw4532i" path="res://Texturas/GoogleEmojis/skull.svg" id="4_vxa2l"]
+[ext_resource type="PackedScene" uid="uid://bkctr06r4ue2h" path="res://Prefabs/BotaoRecomecar.tscn" id="5_s1xkg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fos0i"]
+bg_color = Color(0.154876, 0.154876, 0.154876, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.627451, 0.996078, 0.713726, 1)
+border_blend = true
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="LabelSettings" id="LabelSettings_wkp8b"]
+font_size = 24
+font_color = Color(0.63, 1, 0.716333, 1)
+shadow_size = 10
+shadow_color = Color(0, 0, 0, 0.466667)
+
+[node name="PainelConfiguracao" type="ColorRect" node_paths=PackedStringArray("entrada_vidas", "entrada_movimentos", "entrada_armadilhas")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.235294)
+script = ExtResource("1_p0wao")
+entrada_vidas = NodePath("Painel/CenterContainer/VBoxContainer/GridContainer/EntradaVidas")
+entrada_movimentos = NodePath("Painel/CenterContainer/VBoxContainer/GridContainer/EntradaMovimentos")
+entrada_armadilhas = NodePath("Painel/CenterContainer/VBoxContainer/GridContainer/EntradaArmadilhas")
+
+[node name="Painel" type="Panel" parent="."]
+custom_minimum_size = Vector2(500, 400)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -200.0
+offset_right = 250.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fos0i")
+
+[node name="CenterContainer" type="CenterContainer" parent="Painel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Painel/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="Titulo" type="Label" parent="Painel/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Configurar partida"
+label_settings = SubResource("LabelSettings_wkp8b")
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="Painel/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 20
+columns = 2
+
+[node name="IconeVida" type="TextureRect" parent="Painel/CenterContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("2_s1xkg")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="EntradaVidas" type="SpinBox" parent="Painel/CenterContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 1.0
+value = 1.0
+rounded = true
+suffix = "vida"
+select_all_on_focus = true
+
+[node name="IconeMovimento" type="TextureRect" parent="Painel/CenterContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("3_ivguw")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="EntradaMovimentos" type="SpinBox" parent="Painel/CenterContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 1.0
+value = 1.0
+rounded = true
+suffix = "movimento"
+select_all_on_focus = true
+
+[node name="IconeArmadilha" type="TextureRect" parent="Painel/CenterContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("4_vxa2l")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="EntradaArmadilhas" type="SpinBox" parent="Painel/CenterContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 1.0
+max_value = 99.0
+value = 1.0
+rounded = true
+suffix = "armadilha"
+select_all_on_focus = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Painel/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 60
+alignment = 1
+
+[node name="BotaoRecomecar" parent="Painel/CenterContainer/VBoxContainer/HBoxContainer" instance=ExtResource("5_s1xkg")]
+layout_mode = 2
+
+[node name="BotaoRetornar" type="Button" parent="Painel/CenterContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(140, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Retornar"
+
+[connection signal="value_changed" from="Painel/CenterContainer/VBoxContainer/GridContainer/EntradaVidas" to="." method="quando_vidas_alteradas"]
+[connection signal="value_changed" from="Painel/CenterContainer/VBoxContainer/GridContainer/EntradaMovimentos" to="." method="quando_movimentos_alterados"]
+[connection signal="value_changed" from="Painel/CenterContainer/VBoxContainer/GridContainer/EntradaArmadilhas" to="." method="quando_armadilhas_alteradas"]
+[connection signal="pressed" from="Painel/CenterContainer/VBoxContainer/HBoxContainer/BotaoRecomecar" to="." method="quando_recomecar_pressionado"]
+[connection signal="pressed" from="Painel/CenterContainer/VBoxContainer/HBoxContainer/BotaoRetornar" to="." method="hide"]

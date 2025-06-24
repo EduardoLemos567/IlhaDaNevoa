@@ -1,0 +1,131 @@
+[gd_scene load_steps=10 format=3 uid="uid://bbykhsslyfdc5"]
+
+[ext_resource type="Script" uid="uid://bdvmodcood176" path="res://Scripts/UiJogo.gd" id="1_5fskt"]
+[ext_resource type="Texture2D" uid="uid://cvqb5e7wmpuwb" path="res://Texturas/GoogleEmojis/red_heart.svg" id="2_kl8fg"]
+[ext_resource type="Texture2D" uid="uid://7y2w1vx54hpw" path="res://Texturas/GoogleEmojis/boot.svg" id="3_ejd3u"]
+[ext_resource type="Texture2D" uid="uid://7b74ugw4532i" path="res://Texturas/GoogleEmojis/skull.svg" id="4_r2vnr"]
+[ext_resource type="PackedScene" uid="uid://byd1n2t1w6ntj" path="res://Prefabs/BannerFimPartida.tscn" id="5_2agfd"]
+[ext_resource type="PackedScene" uid="uid://bkctr06r4ue2h" path="res://Prefabs/BotaoRecomecar.tscn" id="5_ejd3u"]
+[ext_resource type="PackedScene" uid="uid://bq1lbvs7k67fs" path="res://Prefabs/PainelConfiguracao.tscn" id="6_0du3x"]
+[ext_resource type="Resource" uid="uid://dx8kectmgb7s2" path="res://ConfiguracaoInicial.tres" id="7_kl8fg"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_trn2v"]
+font_size = 48
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[node name="UiJogo" type="Control" node_paths=PackedStringArray("texto_vidas", "texto_movimentos", "texto_armadilhas", "banner_fim_partida", "painel_configuracao", "trava_tela")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_5fskt")
+texto_vidas = NodePath("MarginContainer/Container/CaixaInformacao/HBoxContainer/TextoVidas")
+texto_movimentos = NodePath("MarginContainer/Container/CaixaInformacao/HBoxContainer2/TextoMovimentos")
+texto_armadilhas = NodePath("MarginContainer/Container/CaixaInformacao/HBoxContainer3/TextoArmadilhas")
+banner_fim_partida = NodePath("BannerFimPartida")
+painel_configuracao = NodePath("PainelConfiguracao")
+trava_tela = NodePath("TravaTela")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="Container" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 50
+
+[node name="CaixaInformacao" type="GridContainer" parent="MarginContainer/Container"]
+layout_mode = 2
+columns = 2
+
+[node name="IconeVida" type="TextureRect" parent="MarginContainer/Container/CaixaInformacao"]
+layout_mode = 2
+texture = ExtResource("2_kl8fg")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Container/CaixaInformacao"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Container/CaixaInformacao/HBoxContainer"]
+layout_mode = 2
+text = "x"
+label_settings = SubResource("LabelSettings_trn2v")
+
+[node name="TextoVidas" type="Label" parent="MarginContainer/Container/CaixaInformacao/HBoxContainer"]
+layout_mode = 2
+text = "99"
+label_settings = SubResource("LabelSettings_trn2v")
+
+[node name="IconeMovimento" type="TextureRect" parent="MarginContainer/Container/CaixaInformacao"]
+layout_mode = 2
+texture = ExtResource("3_ejd3u")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/Container/CaixaInformacao"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Container/CaixaInformacao/HBoxContainer2"]
+layout_mode = 2
+text = "x"
+label_settings = SubResource("LabelSettings_trn2v")
+
+[node name="TextoMovimentos" type="Label" parent="MarginContainer/Container/CaixaInformacao/HBoxContainer2"]
+layout_mode = 2
+text = "99"
+label_settings = SubResource("LabelSettings_trn2v")
+
+[node name="IconeArmadilha" type="TextureRect" parent="MarginContainer/Container/CaixaInformacao"]
+layout_mode = 2
+texture = ExtResource("4_r2vnr")
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/Container/CaixaInformacao"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Container/CaixaInformacao/HBoxContainer3"]
+layout_mode = 2
+text = "x"
+label_settings = SubResource("LabelSettings_trn2v")
+
+[node name="TextoArmadilhas" type="Label" parent="MarginContainer/Container/CaixaInformacao/HBoxContainer3"]
+layout_mode = 2
+text = "99"
+label_settings = SubResource("LabelSettings_trn2v")
+
+[node name="BotaoRecomecar" parent="MarginContainer/Container" instance=ExtResource("5_ejd3u")]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="TravaTela" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BannerFimPartida" parent="." instance=ExtResource("5_2agfd")]
+visible = false
+layout_mode = 1
+
+[node name="PainelConfiguracao" parent="." instance=ExtResource("6_0du3x")]
+visible = false
+layout_mode = 1
+configuracao_inicial = ExtResource("7_kl8fg")
+
+[connection signal="pressed" from="MarginContainer/Container/BotaoRecomecar" to="." method="quando_botao_recomecar_pressionado"]
+[connection signal="pressed" from="BannerFimPartida/BotaoRecomecar" to="." method="quando_botao_recomecar_pressionado"]
+[connection signal="pedido_recomecar" from="PainelConfiguracao" to="." method="quando_pedido_recomecar"]
+
+[editable path="BannerFimPartida"]

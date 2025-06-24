@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=3 uid="uid://be1ydm33tkxq0"]
+
+[ext_resource type="PackedScene" uid="uid://djs6huheci0at" path="res://Prefabs/Celula.tscn" id="1_glv2v"]
+[ext_resource type="Script" uid="uid://bm5c6w365y3dv" path="res://Scripts/ControleJogo.gd" id="1_uu6xs"]
+[ext_resource type="Resource" uid="uid://dx8kectmgb7s2" path="res://ConfiguracaoInicial.tres" id="2_cm0pq"]
+[ext_resource type="PackedScene" uid="uid://bbykhsslyfdc5" path="res://Prefabs/UiJogo.tscn" id="4_cm0pq"]
+
+[sub_resource type="Gradient" id="Gradient_cm0pq"]
+offsets = PackedFloat32Array(0, 0.30137, 1)
+colors = PackedColorArray(0.156958, 0.0914278, 0.0204254, 1, 0.353388, 0.230264, 0.0625485, 1, 0.214736, 0.0981161, 0.0116884, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_fos0i"]
+noise_type = 3
+offset = Vector3(409.64, 238.6, 0)
+fractal_type = 2
+domain_warp_enabled = true
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3dxm6"]
+height = 256
+seamless = true
+color_ramp = SubResource("Gradient_cm0pq")
+noise = SubResource("FastNoiseLite_fos0i")
+
+[node name="ControleJogo" type="Control" node_paths=PackedStringArray("grid", "ui_jogo")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uu6xs")
+configuracao_inicial = ExtResource("2_cm0pq")
+celula_prefab = ExtResource("1_glv2v")
+grid = NodePath("GridDeCelulas")
+ui_jogo = NodePath("UiJogo")
+
+[node name="Fundo" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("NoiseTexture2D_3dxm6")
+
+[node name="GridDeCelulas" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 10
+
+[node name="UiJogo" parent="." instance=ExtResource("4_cm0pq")]
+layout_mode = 1
+
+[connection signal="pedido_recomecar" from="UiJogo" to="." method="quando_pedido_recomecar"]
