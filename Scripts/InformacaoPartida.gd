@@ -1,5 +1,4 @@
-extends Resource
-class_name InformacaoPartida
+class_name InformacaoPartida extends Resource
 
 @export var vidas : int = 5
 @export var movimentos : int = 5

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://caxb01b8stx7u" path="res://Scripts/Celula.gd" id="1_6y372"]
 [ext_resource type="Texture2D" uid="uid://7b74ugw4532i" path="res://Texturas/GoogleEmojis/skull.svg" id="2_6agke"]
+[ext_resource type="Texture2D" uid="uid://h6ypibdb5lyy" path="res://Texturas/GoogleEmojis/crown.svg" id="3_illt2"]
 [ext_resource type="Texture2D" uid="uid://blpqrmqnwvnr5" path="res://Texturas/GoogleEmojis/scroll.svg" id="3_lbcni"]
 [ext_resource type="Texture2D" uid="uid://cs50sk7nbvnio" path="res://Texturas/arrow.svg" id="4_a83g8"]
 
@@ -21,9 +22,6 @@ colors = PackedColorArray(1, 0.616667, 0, 1, 0, 0, 0, 1)
 gradient = SubResource("Gradient_a83g8")
 fill = 2
 fill_from = Vector2(0.5, 0.5)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_h7exk"]
-load_path = "res://.godot/imported/crown.svg-18c66c939a43461ac1112c6c69a1f760.ctex"
 
 [sub_resource type="Gradient" id="Gradient_5ei7h"]
 offsets = PackedFloat32Array(0.413655, 1)
@@ -96,7 +94,6 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="IconeTesouro" type="TextureRect" parent="."]
-visible = false
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 1
 anchors_preset = 15
@@ -120,7 +117,7 @@ offset_right = 24.0
 offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("CompressedTexture2D_h7exk")
+texture = ExtResource("3_illt2")
 expand_mode = 1
 stretch_mode = 5
 
@@ -155,7 +152,7 @@ stretch_mode = 5
 
 [node name="SetaBussola" type="TextureRect" parent="IconePista"]
 visible = false
-modulate = Color(2.5028e-06, 0.652123, 0.917965, 1)
+modulate = Color(1, 0, 0, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -168,6 +165,7 @@ offset_right = 24.0
 offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.3, 1.3)
 pivot_offset = Vector2(24, 24)
 texture = ExtResource("4_a83g8")
 expand_mode = 1

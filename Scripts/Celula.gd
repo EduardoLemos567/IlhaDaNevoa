@@ -1,5 +1,4 @@
-extends Control
-class_name Celula
+class_name Celula extends Control
 
 enum TIPO {
 	PISTA,
@@ -15,6 +14,10 @@ enum TIPO {
 @export var icone_pista : TextureRect
 @export var texto_pista : Label
 @export var seta_bussola : TextureRect
+
+var esta_bussola_ativa: bool:
+	get:
+		return seta_bussola.visible
 
 signal pressionada(celula : Celula)
 

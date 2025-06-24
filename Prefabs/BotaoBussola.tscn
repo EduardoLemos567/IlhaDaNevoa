@@ -1,0 +1,85 @@
+[gd_scene load_steps=7 format=3 uid="uid://b53i2pvw7assv"]
+
+[ext_resource type="Texture2D" uid="uid://hmypdin6pyxl" path="res://Texturas/GoogleEmojis/compass.svg" id="1_snwcg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_snwcg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_snwcg"]
+resource_local_to_scene = true
+bg_color = Color(0.59, 0.4779, 0.4779, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.6, 0.3777, 0.366, 1)
+border_blend = true
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jp35f"]
+resource_local_to_scene = true
+bg_color = Color(0.740265, 0.499949, 0.498007, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.597688, 0.193027, 0.170387, 1)
+border_blend = true
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a2seq"]
+resource_local_to_scene = true
+bg_color = Color(0.349463, 0.169073, 0.169763, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.597688, 0.193027, 0.170387, 1)
+border_blend = true
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yximj"]
+resource_local_to_scene = true
+bg_color = Color(0.59, 0.3127, 0.3127, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.597688, 0.193027, 0.170387, 1)
+border_blend = true
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[node name="BotaoBussola" type="Button"]
+custom_minimum_size = Vector2(170, 40)
+offset_right = 170.0
+offset_bottom = 40.0
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 18
+theme_override_styles/focus = SubResource("StyleBoxEmpty_snwcg")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_snwcg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jp35f")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_a2seq")
+theme_override_styles/normal = SubResource("StyleBoxFlat_yximj")
+text = "      Usar Bússola"
+expand_icon = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 7.0
+offset_right = 38.0
+offset_bottom = 32.0
+texture = ExtResource("1_snwcg")
+expand_mode = 1
+stretch_mode = 5

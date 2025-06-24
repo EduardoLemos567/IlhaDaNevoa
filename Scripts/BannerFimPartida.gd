@@ -1,5 +1,4 @@
-extends Control
-class_name BannerFimPartida
+class_name BannerFimPartida extends Control
 
 @export var texto_vitoria : Label
 @export var caixa_derrota : VBoxContainer

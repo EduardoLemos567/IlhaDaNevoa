@@ -1,20 +1,105 @@
-[gd_scene load_steps=10 format=3 uid="uid://bbykhsslyfdc5"]
+[gd_scene load_steps=17 format=3 uid="uid://bbykhsslyfdc5"]
 
 [ext_resource type="Script" uid="uid://bdvmodcood176" path="res://Scripts/UiJogo.gd" id="1_5fskt"]
 [ext_resource type="Texture2D" uid="uid://cvqb5e7wmpuwb" path="res://Texturas/GoogleEmojis/red_heart.svg" id="2_kl8fg"]
 [ext_resource type="Texture2D" uid="uid://7y2w1vx54hpw" path="res://Texturas/GoogleEmojis/boot.svg" id="3_ejd3u"]
 [ext_resource type="Texture2D" uid="uid://7b74ugw4532i" path="res://Texturas/GoogleEmojis/skull.svg" id="4_r2vnr"]
+[ext_resource type="Texture2D" uid="uid://hmypdin6pyxl" path="res://Texturas/GoogleEmojis/compass.svg" id="5_0du3x"]
 [ext_resource type="PackedScene" uid="uid://byd1n2t1w6ntj" path="res://Prefabs/BannerFimPartida.tscn" id="5_2agfd"]
 [ext_resource type="PackedScene" uid="uid://bkctr06r4ue2h" path="res://Prefabs/BotaoRecomecar.tscn" id="5_ejd3u"]
+[ext_resource type="PackedScene" uid="uid://b53i2pvw7assv" path="res://Prefabs/BotaoBussola.tscn" id="5_r2vnr"]
 [ext_resource type="PackedScene" uid="uid://bq1lbvs7k67fs" path="res://Prefabs/PainelConfiguracao.tscn" id="6_0du3x"]
-[ext_resource type="Resource" uid="uid://dx8kectmgb7s2" path="res://ConfiguracaoInicial.tres" id="7_kl8fg"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_trn2v"]
 font_size = 48
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
-[node name="UiJogo" type="Control" node_paths=PackedStringArray("texto_vidas", "texto_movimentos", "texto_armadilhas", "banner_fim_partida", "painel_configuracao", "trava_tela")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2agfd"]
+resource_local_to_scene = true
+bg_color = Color(0.59, 0.4779, 0.4779, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.6, 0.3777, 0.366, 1)
+border_blend = true
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0du3x"]
+resource_local_to_scene = true
+bg_color = Color(0.740265, 0.499949, 0.498007, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.597688, 0.193027, 0.170387, 1)
+border_blend = true
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1no84"]
+resource_local_to_scene = true
+bg_color = Color(0.349463, 0.169073, 0.169763, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.597688, 0.193027, 0.170387, 1)
+border_blend = true
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bpdbd"]
+resource_local_to_scene = true
+bg_color = Color(0.59, 0.3127, 0.3127, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.597688, 0.193027, 0.170387, 1)
+border_blend = true
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r2vnr"]
+resource_local_to_scene = true
+bg_color = Color(4.33177e-07, 0.713025, 0.441512, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.0036, 0.16398, 0.36, 1)
+border_blend = true
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uqxxc"]
+resource_local_to_scene = true
+bg_color = Color(4.33177e-07, 0.713025, 0.441512, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.351563, 0.351563, 0.351563, 1)
+border_blend = true
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[node name="UiJogo" type="Control" node_paths=PackedStringArray("texto_vidas", "texto_movimentos", "texto_armadilhas", "texto_bussolas", "bussola_container", "icone_bussola", "botao_bussola", "banner_fim_partida", "painel_configuracao", "trava_tela")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -26,6 +111,10 @@ script = ExtResource("1_5fskt")
 texto_vidas = NodePath("MarginContainer/Container/CaixaInformacao/HBoxContainer/TextoVidas")
 texto_movimentos = NodePath("MarginContainer/Container/CaixaInformacao/HBoxContainer2/TextoMovimentos")
 texto_armadilhas = NodePath("MarginContainer/Container/CaixaInformacao/HBoxContainer3/TextoArmadilhas")
+texto_bussolas = NodePath("MarginContainer/Container/CaixaInformacao/BussolaContainer/TextoBussolas")
+bussola_container = NodePath("MarginContainer/Container/CaixaInformacao/BussolaContainer")
+icone_bussola = NodePath("MarginContainer/Container/CaixaInformacao/IconeBussola")
+botao_bussola = NodePath("MarginContainer/Container/BotaoBussola")
 banner_fim_partida = NodePath("BannerFimPartida")
 painel_configuracao = NodePath("PainelConfiguracao")
 trava_tela = NodePath("TravaTela")
@@ -49,12 +138,14 @@ size_flags_horizontal = 0
 theme_override_constants/separation = 50
 
 [node name="CaixaInformacao" type="GridContainer" parent="MarginContainer/Container"]
+custom_minimum_size = Vector2(0, 300)
 layout_mode = 2
 columns = 2
 
 [node name="IconeVida" type="TextureRect" parent="MarginContainer/Container/CaixaInformacao"]
 layout_mode = 2
 texture = ExtResource("2_kl8fg")
+stretch_mode = 4
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Container/CaixaInformacao"]
 layout_mode = 2
@@ -72,6 +163,7 @@ label_settings = SubResource("LabelSettings_trn2v")
 [node name="IconeMovimento" type="TextureRect" parent="MarginContainer/Container/CaixaInformacao"]
 layout_mode = 2
 texture = ExtResource("3_ejd3u")
+stretch_mode = 4
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/Container/CaixaInformacao"]
 layout_mode = 2
@@ -89,6 +181,7 @@ label_settings = SubResource("LabelSettings_trn2v")
 [node name="IconeArmadilha" type="TextureRect" parent="MarginContainer/Container/CaixaInformacao"]
 layout_mode = 2
 texture = ExtResource("4_r2vnr")
+stretch_mode = 4
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/Container/CaixaInformacao"]
 layout_mode = 2
@@ -103,9 +196,35 @@ layout_mode = 2
 text = "99"
 label_settings = SubResource("LabelSettings_trn2v")
 
+[node name="IconeBussola" type="TextureRect" parent="MarginContainer/Container/CaixaInformacao"]
+layout_mode = 2
+texture = ExtResource("5_0du3x")
+stretch_mode = 4
+
+[node name="BussolaContainer" type="HBoxContainer" parent="MarginContainer/Container/CaixaInformacao"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Container/CaixaInformacao/BussolaContainer"]
+layout_mode = 2
+text = "x"
+label_settings = SubResource("LabelSettings_trn2v")
+
+[node name="TextoBussolas" type="Label" parent="MarginContainer/Container/CaixaInformacao/BussolaContainer"]
+layout_mode = 2
+text = "99"
+label_settings = SubResource("LabelSettings_trn2v")
+
+[node name="BotaoBussola" parent="MarginContainer/Container" instance=ExtResource("5_r2vnr")]
+layout_mode = 2
+theme_override_styles/disabled = SubResource("StyleBoxFlat_2agfd")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0du3x")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1no84")
+theme_override_styles/normal = SubResource("StyleBoxFlat_bpdbd")
+
 [node name="BotaoRecomecar" parent="MarginContainer/Container" instance=ExtResource("5_ejd3u")]
 layout_mode = 2
 size_flags_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_r2vnr")
 
 [node name="TravaTela" type="Control" parent="."]
 layout_mode = 1
@@ -119,11 +238,14 @@ grow_vertical = 2
 visible = false
 layout_mode = 1
 
+[node name="BotaoRecomecar" parent="BannerFimPartida" index="1"]
+theme_override_styles/normal = SubResource("StyleBoxFlat_uqxxc")
+
 [node name="PainelConfiguracao" parent="." instance=ExtResource("6_0du3x")]
 visible = false
 layout_mode = 1
-configuracao_inicial = ExtResource("7_kl8fg")
 
+[connection signal="pressed" from="MarginContainer/Container/BotaoBussola" to="." method="quando_botao_bussola_pressionado"]
 [connection signal="pressed" from="MarginContainer/Container/BotaoRecomecar" to="." method="quando_botao_recomecar_pressionado"]
 [connection signal="pressed" from="BannerFimPartida/BotaoRecomecar" to="." method="quando_botao_recomecar_pressionado"]
 [connection signal="pedido_recomecar" from="PainelConfiguracao" to="." method="quando_pedido_recomecar"]
