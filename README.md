@@ -1,3 +1,5 @@
+Versão funcional: https://eduardolemos567.itch.io/ilha-da-nevoa
+
 # IlhaDaNevoa
 
 ## Visão Geral
